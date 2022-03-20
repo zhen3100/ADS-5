@@ -4,6 +4,6 @@
 
 template<typename T, int size>
 class TStack {
-
+   // добавьте код стека
 };
 #endif  // INCLUDE_TSTACK_H_
