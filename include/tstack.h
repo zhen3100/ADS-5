@@ -3,10 +3,10 @@
 #define INCLUDE_TSTACK_H_
 
 template<typename T, int size>
-class TStack
-{
+class TStack {
  private:
-     T arr[size];
+     int a = size;
+     T arr[a];
      int top;
  public:
      TStack() :top(-1) { }
