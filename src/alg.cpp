@@ -4,7 +4,6 @@
 #include "tstack.h"
 
 
-
 int priority(char ch) {
     if (ch == '(') {
         return 1;
@@ -22,36 +21,25 @@ std::string infx2pstfx(std::string inf) {
     std::string post;
     for (int i = 0; i < inf.size(); i++) {
         int pr = priority(inf[i]);
-        if ((priority(inf[i]) == -1) && (inf[i] != ')'))
-        {
-            if (!post.empty() && priority(inf[i - 1]) != -1)
-            {
+        if ((priority(inf[i]) == -1) && (inf[i] != ')')) {
+            if (!post.empty() && priority(inf[i - 1]) != -1) {
                 post.push_back(' ');
             }
             post.push_back(inf[i]);
 
-        }
-        else if ((priority(inf[i]) > priority(stack1.get())) || (stack1.isEmpty()) || (inf[i] == '('))
-        {
+        } else if ((priority(inf[i]) > priority(stack1.get())) 
+                   || (stack1.isEmpty()) || (inf[i] == '(')) {
             stack1.push(inf[i]);
-        }
-        //
-        else
-        {
-            if (inf[i] == ')')
-            {
-                while (stack1.get() != '(')
-                {
+        } else {
+            if (inf[i] == ')') {
+                while (stack1.get() != '(') {
                     post.push_back(' ');
                     post.push_back(stack1.get());
                     stack1.pop();
                 }
                 stack1.pop();
-            }
-            else
-            {
-                while (priority(stack1.get()) >= priority(inf[i]))
-                {
+            } else {
+                while (priority(stack1.get()) >= priority(inf[i])) {
                     post.push_back(' ');
                     post.push_back(stack1.get());
                     stack1.pop();
@@ -61,17 +49,14 @@ std::string infx2pstfx(std::string inf) {
         }
         
     }
-    while (!stack1.isEmpty())
-    {
+    while (!stack1.isEmpty()) {
         post.push_back(' ');
-        if (stack1.get() != '(')
-        {
+        if (stack1.get() != '(') {
             post.push_back(stack1.get());
         }
         stack1.pop();
 
     }
-
     return post;
 }
 int convert(char num) {
